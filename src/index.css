@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+
+/*Paleta de colores*/
+.celeste {
+    background-color: #8EA8C3;
+}
+
+.text-celeste {
+    color: #8EA8C3;
+}
+.azul-claro {
+    background-color: #406E8E;
+}
+
+.azul {
+    color: #23395B;
+}
+
+.bg-oscuro {
+    background-color: #161925;
+}
+.azul-oscuro {
+    color: #161925;
+}
+
+@tailwind utilities;
