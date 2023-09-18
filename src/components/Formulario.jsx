@@ -3,15 +3,15 @@
 const Formulario = () => {
   return (
     <div className="md:w-1/2 lg:w-2/5">
-      <h2 className="font-black text-3xl text-center">
+      <h2 className="font-black text-2xl lg:text-3xl text-center">
         Nueva Tarea
       </h2>
-      <p className="text-lg mt-5 text-center mb-10">
+      <p className="text-xl mt-5 text-center mb-10">
         Añade una tarea para su {""}
         <span className="azul-oscuro font-bold">Seguimiento</span>
       </p>
 
-      <form className="celeste shadow-md rounded-lg py-10 px-5 azul-oscuro space-y-5 mb-5">
+      <form className="celeste shadow-md rounded-lg py-10 px-5 azul-oscuro space-y-5 mb-5 mx-3 ">
         <div>
 
           <label htmlFor="asunto" className="block azul uppercase font-bold">Asunto tarea</label>
