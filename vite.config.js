@@ -1,3 +1,5 @@
+//Este archivo usualmente no se modifica
+//salvo querramos instalar algun plugin de Vite
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
