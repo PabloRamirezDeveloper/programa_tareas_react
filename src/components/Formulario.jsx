@@ -23,8 +23,7 @@ const Formulario = ({tareas, setTareas}) => {
                         //formulario
 
     if ([asunto, creador, fecha, detalles].includes('')) {
-      console.log('Al menos hay un campo vacio');
-      
+    
       setError(true);
       return;
     } 
@@ -133,7 +132,7 @@ const Formulario = ({tareas, setTareas}) => {
         </div>
         <input
           type="submit"
-          className="bg-oscuro text-celeste w-full uppercase font-bold p-3 r hover:bg-slate-500  hover:text-slate-950 cursor-pointer transition-colors"
+          className="bg-oscuro text-celeste w-full uppercase font-bold p-3 r hover:bg-slate-500  hover:text-slate-950 cursor-pointer transition-colors rounded-md"
           value="Agregar Tarea"
         />
       </form>
