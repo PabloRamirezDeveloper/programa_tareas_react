@@ -1,7 +1,8 @@
 
-import { useState } from 'react'; //Forma de importar componentes de React
+import { useState, useEffect } from 'react'; //Forma de importar componentes de React
 import Error from './Error';
-const Formulario = ({tareas, setTareas}) => {
+
+const Formulario = ({ tareas, setTareas, tarea, setTarea }) => {
 
   const [asunto, setAsunto] = useState('');
   const [creador, setCreador] = useState('');
@@ -9,6 +10,15 @@ const Formulario = ({tareas, setTareas}) => {
   const [detalles, setDetalles] = useState('');
 
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (Object.values(tarea).length > 0) {
+      setAsunto(tarea.asunto)
+      setCreador(tarea.creador)
+      setFecha(tarea.fecha)
+      setDetalles(tarea.detalles)
+    }
+  }, [tarea])
 
   const crearId = () => {
 
@@ -20,13 +30,13 @@ const Formulario = ({tareas, setTareas}) => {
   const handleSubmit = (e) => { //Funcion para validar el formulario
 
     e.preventDefault(); //Prevenimos la accion default que es enviar el 
-                        //formulario
+    //formulario
 
     if ([asunto, creador, fecha, detalles].includes('')) {
-    
+
       setError(true);
       return;
-    } 
+    }
     setError(false);
 
     //Creamos un objeto de tareas para guardarlo en el array de tareas
@@ -38,16 +48,36 @@ const Formulario = ({tareas, setTareas}) => {
       creador,
       fecha,
       detalles,
-      id : crearId()
+      
     }
-    setTareas([...tareas, objetoTarea]);
-    
+
+
+
+    if (tarea.id) {
+      //Editando la tarea
+      
+      objetoTarea.id = tarea.id;
+      const tareasActualizadas = tareas.map( tareaState => tareaState.id
+        === tarea.id ? objetoTarea : tareaState)
+
+        setTareas(tareasActualizadas);
+
+        setTarea ({}); //Reseteamos la informacion del state
+    } else {
+      //Agregando una nueva tarea
+      objetoTarea.id = crearId();
+      setTareas([...tareas, objetoTarea]);
+
+    }
+
+
+
     //Reiniciamos los valores del formulario
     setAsunto('');
     setCreador('');
     setFecha('');
     setDetalles('');
-   
+
   }
 
   return (
@@ -65,11 +95,11 @@ const Formulario = ({tareas, setTareas}) => {
         //En React se suele llamar de esta manera: handleSubmit
         className="celeste shadow-md rounded-lg py-10 px-5 azul-oscuro space-y-5 mb-5 mx-3 ">
 
-       
+
         {error &&  //Expresion para mostrar un mensaje de error si hay un campo vacio
-                <Error>
-                  Todos los campos son obligatorios
-                </Error>
+          <Error>
+            Todos los campos son obligatorios
+          </Error>
         }
 
         <div>
@@ -133,7 +163,7 @@ const Formulario = ({tareas, setTareas}) => {
         <input
           type="submit"
           className="bg-oscuro text-celeste w-full uppercase font-bold p-3 r hover:bg-slate-500  hover:text-slate-950 cursor-pointer transition-colors rounded-md"
-          value="Agregar Tarea"
+          value={(tarea.id) ? 'Editar tarea' : 'Agregar tarea'}
         />
       </form>
     </div>

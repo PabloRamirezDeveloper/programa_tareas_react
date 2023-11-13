@@ -6,8 +6,11 @@ import ListadoTareas from "./components/ListadoTareas"
 
 function App() {
 
-  const [tareas, setTareas] = useState([]);
+  const [tareas, setTareas] = useState([]); //State que almacena todas las tareas
+                                            //en un array
 
+  const [tarea, setTarea] = useState({}); //State que almacena cada tarea en un 
+                                          //objeto                            
 
 
   return (
@@ -19,9 +22,13 @@ function App() {
           tareas = {tareas}
           setTareas = {setTareas} //Pasamos  la funcion setTareas a Formulario que es donde 
                                     //se está registrando las tareas
+          tarea = {tarea}   
+          setTarea = {setTarea}                             
         />
         <ListadoTareas
           tareas = {tareas}
+          setTarea = {setTarea}
+   
         />
       </div>
 

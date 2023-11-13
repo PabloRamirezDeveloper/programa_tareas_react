@@ -1,6 +1,6 @@
 
 
-const Tarea = ({ tarea }) => {
+const Tarea = ({ tarea, setTarea}) => {
 
     const { asunto, creador, fecha, detalles } = tarea; //Aplicamos destructuring 
     //para obtener los valores de formulario
@@ -28,6 +28,9 @@ const Tarea = ({ tarea }) => {
                     type="button"
                     className="py-2 px-10 bg-oscuro hover:bg-slate-500 text-white hover:text-slate-950
                     uppercase font-bold cursor-pointer transition-colors rounded-lg"
+                    onClick={ () => setTarea(tarea)} //Esperamos que suceda el evento 
+                                                     //click y mandamos llamar la funcion
+                                                     //setTarea
                 >Editar</button>
 
                 <button

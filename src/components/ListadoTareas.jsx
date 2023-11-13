@@ -1,9 +1,9 @@
+
 import Tarea from "./Tarea"
 
 
 
-const ListadoTareas = ({ tareas }) => {
-
+const ListadoTareas = ({ tareas, setTarea }) => {
 
   return (
 
@@ -23,8 +23,9 @@ const ListadoTareas = ({ tareas }) => {
               <Tarea
                 key={tarea.id}  // Cuando vayas a iterar y mostrar diferentes  
                 // componentes una y otra vez en base a un arreglo, 
-                // tienes que pasarle un ki único 
+                // tienes que pasarle un id único 
                 tarea={tarea}
+                setTarea= {setTarea}
               />
 
             ))}
@@ -36,7 +37,7 @@ const ListadoTareas = ({ tareas }) => {
 
           <p className="text-xl mt-5 text-center mb-10">
             Se debe comenzar agregando tareas {""}
-            <span className="azul-oscuro font-bold">y aparecerán en esta sección</span>
+            <span className="azul-oscuro font-bold ">y aparecerán en esta sección</span>
           </p>
         </>}
 
