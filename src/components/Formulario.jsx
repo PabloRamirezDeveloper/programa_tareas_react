@@ -4,6 +4,7 @@ import Error from './Error';
 
 const Formulario = ({ tareas, setTareas, tarea, setTarea }) => {
 
+  //Creamos los sgtes states para luego crear el objeto de tarea
   const [asunto, setAsunto] = useState('');
   const [creador, setCreador] = useState('');
   const [fecha, setFecha] = useState('');
@@ -11,7 +12,10 @@ const Formulario = ({ tareas, setTareas, tarea, setTarea }) => {
 
   const [error, setError] = useState(false);
 
-  useEffect(() => {
+
+  useEffect(() => {  //useEffect para cargar el formulario con la informacion
+                    //que tenemos en el objeto tarea. Con Object.values podemos
+                    //sober cuondo el objeto tarea contiene informacion
     if (Object.values(tarea).length > 0) {
       setAsunto(tarea.asunto)
       setCreador(tarea.creador)
@@ -20,19 +24,21 @@ const Formulario = ({ tareas, setTareas, tarea, setTarea }) => {
     }
   }, [tarea])
 
-  const crearId = () => {
+  const crearId = () => { //Funcion para asociar un id a cada objeto tarea
 
     const random = Math.random().toString(36).substring(2);
     const fecha = Date.now().toString(36);
 
     return random + fecha;
   }
+
   const handleSubmit = (e) => { //Funcion para validar el formulario
 
     e.preventDefault(); //Prevenimos la accion default que es enviar el 
     //formulario
 
-    if ([asunto, creador, fecha, detalles].includes('')) {
+    if ([asunto, creador, fecha, detalles].includes('')) { //Por medio de
+                //este if comprobamos si algun input de formulario esta vacio
 
       setError(true);
       return;
@@ -40,7 +46,8 @@ const Formulario = ({ tareas, setTareas, tarea, setTarea }) => {
     setError(false);
 
     //Creamos un objeto de tareas para guardarlo en el array de tareas
-    //que se ha creado en App.jsx
+    //que se ha creado en App.jsx. Este objeto contiene los valores del
+    //formulario
 
     const objetoTarea = {
 
@@ -55,7 +62,6 @@ const Formulario = ({ tareas, setTareas, tarea, setTarea }) => {
 
     if (tarea.id) {
       //Editando la tarea
-      
       objetoTarea.id = tarea.id;
       const tareasActualizadas = tareas.map( tareaState => tareaState.id
         === tarea.id ? objetoTarea : tareaState)

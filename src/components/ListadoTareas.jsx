@@ -3,7 +3,7 @@ import Tarea from "./Tarea"
 
 
 
-const ListadoTareas = ({ tareas, setTarea }) => {
+const ListadoTareas = ({ tareas, setTarea, eliminarTarea }) => {
 
   return (
 
@@ -20,12 +20,14 @@ const ListadoTareas = ({ tareas, setTarea }) => {
           <div className="md:h-screen overflow-y-scroll space-y-3 mb-4">
 
             {tareas.map(tarea => (
+
               <Tarea
                 key={tarea.id}  // Cuando vayas a iterar y mostrar diferentes  
                 // componentes una y otra vez en base a un arreglo, 
                 // tienes que pasarle un id único 
                 tarea={tarea}
                 setTarea= {setTarea}
+                eliminarTarea= {eliminarTarea}
               />
 
             ))}

@@ -1,9 +1,18 @@
 
 
-const Tarea = ({ tarea, setTarea}) => {
+const Tarea = ({ tarea, setTarea, eliminarTarea}) => {
 
-    const { asunto, creador, fecha, detalles } = tarea; //Aplicamos destructuring 
+    const { asunto, creador, fecha, detalles, id } = tarea; //Aplicamos destructuring 
     //para obtener los valores de formulario
+
+    const handleEliminar = () => {
+
+        const respuesta = confirm('Deseas eliminar la tarea?');
+
+        if(respuesta) {
+            eliminarTarea(id)
+        }
+    }
     return (
 
         <div className="mx-3 celeste shadow-md px-5 py-10 rounded-xl">
@@ -37,6 +46,7 @@ const Tarea = ({ tarea, setTarea}) => {
                     type="button"
                     className="py-2 px-10 bg-amber-900 hover:bg-amber-800 text-white hover:text-slate-950
                     uppercase font-bold cursor-pointer transition-colors rounded-lg"
+                    onClick={ handleEliminar}
                 >Eliminar</button>
             </div>
         </div>
