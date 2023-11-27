@@ -6,8 +6,9 @@ import ListadoTareas from "./components/ListadoTareas"
 
 function App() {
 
-  const [tareas, setTareas] = useState(JSON.parse(localStorage.getItem('tareas')) || []); //State que almacena todas las tareas
-  //en un array
+  const [tareas, setTareas] = useState(JSON.parse(localStorage.getItem('tareas')) || []);
+  //State que almacena todas las tareas en un array
+
 
   const [tarea, setTarea] = useState({}); //State que almacena cada tarea en un 
   //objeto                            
@@ -16,7 +17,7 @@ function App() {
 
   //     const tareasLS = JSON.parse(localStorage.getItem('tareas')) ;
   //     tareasLS.length > 0 && setTareas(tareasLS);
-  
+
   // }, [])
 
   useEffect(() => {
